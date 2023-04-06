@@ -1,0 +1,16 @@
+server:
+    port: 8080
+
+spring:
+    #autoconfigure:
+    #    exclude:
+    #        - org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
+    datasource: 
+        url: jdbc:postgresql://localhost:5432/algo
+        username: postgres
+        password: admin123
+        driver-class-name: org.postgresql.Driver
+    jpa: 
+        generate-ddl: true
+        hibernate:
+            ddl-auto: create-drop 
