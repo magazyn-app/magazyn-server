@@ -21,7 +21,7 @@ public class DbInit {
 
     @PostConstruct
     public void init () {
-        Item item1 = new Item( null, "water", 69.69, ItemType.FOOD);
+        Item item1 = new Item(null, "water", 69.69, ItemType.FOOD);
 
         items.save(item1);
     }
