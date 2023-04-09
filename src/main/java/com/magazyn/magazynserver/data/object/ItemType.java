@@ -6,9 +6,12 @@ import lombok.Getter;
 @AllArgsConstructor
 @Getter
 public enum ItemType {
+    ART("art"),
+    CLOTHES("clothes"),
+    ELECTRONICS("electronics"),
     FOOD("food"),
-    SPORT("sport"),
-    GAY("gay");
+    MUSIC("music"),
+    SPORT("sport");
 
     private final String itemType;
 }
