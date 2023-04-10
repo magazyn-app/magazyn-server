@@ -8,7 +8,7 @@ import static com.magazyn.magazynserver.config.Constants.APP_PROPERTIES;
 
 @Configuration
 @PropertySource(APP_PROPERTIES)
-@EnableJpaRepositories
+@EnableJpaRepositories(basePackages = "com.magazyn.magazynserver.data.repository")
 public class AppConfig {
-    
+
 }
