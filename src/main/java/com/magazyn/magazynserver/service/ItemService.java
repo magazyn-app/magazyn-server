@@ -8,6 +8,7 @@ import com.magazyn.magazynserver.data.model.Item;
 
 @Service
 public interface ItemService {
-    List<Item> getAllFood ();
-    List<Item> getAllItems ();
+    List<Item> getAllFood();
+
+    List<Item> getAllItems();
 }

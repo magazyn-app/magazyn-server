@@ -15,11 +15,11 @@ import com.magazyn.magazynserver.service.impl.ItemServiceImpl;
 @RestController
 @RequestMapping("/item")
 public class ItemController {
-    
+
     private final ItemService itemService;
 
     @Autowired
-    public ItemController (ItemServiceImpl itemServiceImpl){
+    public ItemController(ItemServiceImpl itemServiceImpl) {
         this.itemService = itemServiceImpl;
     }
 

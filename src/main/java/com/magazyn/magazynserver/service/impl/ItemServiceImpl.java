@@ -2,6 +2,7 @@ package com.magazyn.magazynserver.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -13,28 +14,35 @@ import com.magazyn.magazynserver.service.ItemService;
 
 @Component
 public class ItemServiceImpl implements ItemService {
-    
+
     private final ItemRepository items;
 
-    @Autowired 
-    public ItemServiceImpl (ItemRepository itemsRepo){
+    @Autowired
+    public ItemServiceImpl(ItemRepository itemsRepo) {
         this.items = itemsRepo;
     }
 
     @Override
-    public List<Item> getAllItems (){
+    public List<Item> getAllItems() {
         return items.findAll();
     }
 
     @Override
-    public List<Item> getAllFood (){
+    public List<Item> getAllFood() {
         List<Item> allItems = items.findAll();
         List<Item> allFoodItems = new ArrayList<>();
         allItems.forEach(item -> {
-            if (item.getType().equals(ItemType.FOOD)){
+            if (item.getType().equals(ItemType.FOOD)) {
                 allFoodItems.add(item);
             }
-        });        
+        });
         return allFoodItems;
+    }
+
+    public List<Item> getAllFoodFunctional() {
+        return items.findAll()
+                .stream()
+                .filter(item -> item.getType().equals(ItemType.FOOD))
+                .collect(Collectors.toList());
     }
 }
