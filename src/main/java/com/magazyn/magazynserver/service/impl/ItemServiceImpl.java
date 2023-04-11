@@ -39,6 +39,11 @@ public class ItemServiceImpl implements ItemService {
         return allFoodItems;
     }
 
+    @Override
+    public List<Item> addItems(List<Item> itemsToAdd){
+        return items.saveAll(itemsToAdd);
+    }
+
     public List<Item> getAllFoodFunctional() {
         return items.findAll()
                 .stream()

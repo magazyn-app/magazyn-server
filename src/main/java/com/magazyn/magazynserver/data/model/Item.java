@@ -1,5 +1,6 @@
 package com.magazyn.magazynserver.data.model;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.magazyn.magazynserver.data.object.ItemType;
 
 import jakarta.persistence.Column;
@@ -14,6 +15,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Data
 @NoArgsConstructor
+@JsonAutoDetect
 @AllArgsConstructor
 public class Item {
     @Id

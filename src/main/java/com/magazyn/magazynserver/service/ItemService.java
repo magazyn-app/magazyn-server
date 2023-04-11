@@ -11,4 +11,6 @@ public interface ItemService {
     List<Item> getAllFood();
 
     List<Item> getAllItems();
+
+    List<Item> addItems(List<Item> items);
 }
