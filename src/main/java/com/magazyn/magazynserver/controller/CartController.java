@@ -7,12 +7,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import static com.magazyn.magazynserver.config.Constants.api_ALL;
+import static com.magazyn.magazynserver.config.Constants.api_CARTS;
 import static com.magazyn.magazynserver.util.HttpUtil.toResponse;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/cart")
+@RequestMapping(api_CARTS)
 public class CartController {
 
     CartService cartService;
@@ -21,7 +23,7 @@ public class CartController {
         this.cartService = cartService;
     }
 
-    @GetMapping("/all")
+    @GetMapping(api_ALL)
     public ResponseEntity<List<Cart>> getAllCarts() {
         return toResponse(cartService.getAllCarts());
     }

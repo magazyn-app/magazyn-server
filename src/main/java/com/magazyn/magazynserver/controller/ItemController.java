@@ -10,11 +10,12 @@ import com.magazyn.magazynserver.data.model.Item;
 import com.magazyn.magazynserver.service.ItemService;
 import com.magazyn.magazynserver.service.impl.ItemServiceImpl;
 
+import static com.magazyn.magazynserver.config.Constants.*;
 import static com.magazyn.magazynserver.util.HttpUtil.toResponse;
 
 
 @RestController
-@RequestMapping("/item")
+@RequestMapping(api_ITEMS)
 public class ItemController {
 
     private final ItemService itemService;
@@ -24,7 +25,7 @@ public class ItemController {
         this.itemService = itemServiceImpl;
     }
 
-    @GetMapping("/get-all")
+    @GetMapping(api_ALL)
     public ResponseEntity<List<Item>> getAll() {
         return toResponse(itemService.getAllItems());
     }
@@ -34,7 +35,7 @@ public class ItemController {
         return toResponse(itemService.getAllFood());
     }
 
-    @GetMapping("/{id}")
+    @GetMapping(api_ID)
     public ResponseEntity<List<Item>> getItemById(@PathVariable String id) {
         return toResponse(itemService.getItemById(Long.valueOf(id)));
     }
