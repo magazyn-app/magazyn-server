@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: magazyn-server
+  name: magazyn-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: magazyn-server
+  strategy: { }
+  template:
+    metadata:
+      labels:
+        app: magazyn-server
+    spec:
+      containers:
+        - image: finda/magazyn-server
+          imagePullPolicy: Always
+          name: magazyn-server
+          ports:
+            - containerPort: 80
+          env:
+            - name: pg_pass
+              value: admin123
+            - name: pg_user
+              value: postgres
+            - name: pg_host
+              value: localhost
+            - name: pg_port
+              value: '5432'
+            - name: pg_db
+              value: algo
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: magazyn-server
+spec:
+  ports:
+    - port: 8000
+      targetPort: 8080
+      name: http
+  selector:
+    app: magazyn-server
+---
+
