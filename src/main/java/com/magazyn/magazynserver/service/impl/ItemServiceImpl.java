@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.magazyn.magazynserver.exception.ItemTypeNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -28,15 +29,23 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
-    public List<Item> getAllFood() {
+    public List<Item> getTypedFoods(String type) throws ItemTypeNotFoundException {
         List<Item> allItems = items.findAll();
-        List<Item> allFoodItems = new ArrayList<>();
+        List<Item> typedItems = new ArrayList<>();
+
         allItems.forEach(item -> {
-            if (item.getType().equals(ItemType.FOOD)) {
-                allFoodItems.add(item);
+            try {
+                var itemType = ItemType.valueOf(type.toUpperCase());
+                if (item.getType().equals(itemType)) {
+                    typedItems.add(item);
+                }
+            } catch (IllegalArgumentException e) {
+                throw new ItemTypeNotFoundException("Item type not found: " + type);
             }
         });
-        return allFoodItems;
+
+        return typedItems;
+
     }
 
     @Override
@@ -45,14 +54,14 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
-    public List<Item> addItems(List<Item> itemsToAdd){
+    public List<Item> addItems(List<Item> itemsToAdd) {
         return items.saveAll(itemsToAdd);
     }
 
-    public List<Item> getAllFoodFunctional() {
+    public List<Item> getAllFoodFunctional(String type) {
         return items.findAll()
                 .stream()
-                .filter(item -> item.getType().equals(ItemType.FOOD))
+                .filter(item -> item.getType().equals(ItemType.valueOf(type)))
                 .collect(Collectors.toList());
     }
 }

@@ -30,14 +30,14 @@ public class ItemController {
         return toResponse(itemService.getAllItems());
     }
 
-    @GetMapping("/get-all-food")
-    public ResponseEntity<List<Item>> getAllFood() {
-        return toResponse(itemService.getAllFood());
+    @GetMapping(api_ALL + api_PATH_VARIABLE)
+    public ResponseEntity<List<Item>> getTypedItems(@PathVariable String pathVariable) {
+        return toResponse(itemService.getTypedFoods(pathVariable));
     }
 
-    @GetMapping(api_ID)
-    public ResponseEntity<List<Item>> getItemById(@PathVariable String id) {
-        return toResponse(itemService.getItemById(Long.valueOf(id)));
+    @GetMapping(api_PATH_VARIABLE)
+    public ResponseEntity<List<Item>> getItemById(@PathVariable String pathVariable) {
+        return toResponse(itemService.getItemById(Long.valueOf(pathVariable)));
     }
 
     @PostMapping
