@@ -4,11 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.magazyn.magazynserver.data.model.Item;
 import com.magazyn.magazynserver.service.ItemService;
@@ -36,6 +32,11 @@ public class ItemController {
     @GetMapping("/get-all-food")
     public ResponseEntity<List<Item>> getAllFood() {
         return toResponse(itemService.getAllFood());
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<List<Item>> getItemById(@PathVariable String id) {
+        return toResponse(itemService.getItemById(Long.valueOf(id)));
     }
 
     @PostMapping

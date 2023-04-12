@@ -12,5 +12,7 @@ public interface ItemService {
 
     List<Item> getAllItems();
 
+    List<Item> getItemById(Long id);
+
     List<Item> addItems(List<Item> items);
 }

@@ -40,6 +40,11 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
+    public List<Item> getItemById(Long id) {
+        return items.findAllById(List.of(id));
+    }
+
+    @Override
     public List<Item> addItems(List<Item> itemsToAdd){
         return items.saveAll(itemsToAdd);
     }
