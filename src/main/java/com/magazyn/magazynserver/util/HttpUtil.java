@@ -6,6 +6,11 @@ import java.util.List;
 
 public class HttpUtil {
     public static <T> ResponseEntity<List<T>> toResponse(List<T> list) {
-        return ResponseEntity.ok(list);
+        if(list == null || list.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        } else {
+            return ResponseEntity.ok(list);
+
+        }
     }
 }
