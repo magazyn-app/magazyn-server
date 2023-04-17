@@ -59,15 +59,15 @@ public class DbInit {
 
     private void initUserItemEntries() {
         List<UserItem> toAdd = List.of(
-                new UserItem(1L, 1L, 1L, 1),
-                new UserItem(1L, 1L, 2L, 1),
-                new UserItem(1L, 1L, 3L, 1),
-                new UserItem(1L, 1L, 4L, 1),
-                new UserItem(1L, 1L, 5L, 1),
-                new UserItem(2L, 2L, 2L, 2),
-                new UserItem(2L, 2L, 1L, 2),
-                new UserItem(2L, 2L, 5L, 2),
-                new UserItem(2L, 3L, 6L, 2));
+                new UserItem(null, 1L, 1L, 1),
+                new UserItem(null, 1L, 2L, 1),
+                new UserItem(null, 1L, 3L, 1),
+                new UserItem(null, 1L, 4L, 1),
+                new UserItem(null, 1L, 5L, 1),
+                new UserItem(null, 2L, 2L, 2),
+                new UserItem(null, 2L, 1L, 2),
+                new UserItem(null, 2L, 5L, 2),
+                new UserItem(null, 3L, 6L, 2));
 
         cartItems.saveAll(toAdd);
     }
