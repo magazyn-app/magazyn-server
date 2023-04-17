@@ -9,12 +9,12 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class CartItem {
+public class UserItem {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "cart_item_id")
-    private Long cartItemId;
-    private Long cartId;
+    @Column(name = "user_entry_id")
+    private Long userEntryId;
+    private Long userId;
     private Long itemId;
     private Integer quantity;
 }

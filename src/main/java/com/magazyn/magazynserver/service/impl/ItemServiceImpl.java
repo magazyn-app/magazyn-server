@@ -2,6 +2,7 @@ package com.magazyn.magazynserver.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import com.magazyn.magazynserver.exception.ItemTypeNotFoundException;
@@ -32,6 +33,7 @@ public class ItemServiceImpl implements ItemService {
     public List<Item> getTypedItems(String type) throws ItemTypeNotFoundException {
         List<Item> allItems = items.findAll();
         List<Item> typedItems = new ArrayList<>();
+
 
         allItems.forEach(item -> {
             try {

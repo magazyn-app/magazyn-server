@@ -5,12 +5,12 @@ spring:
     #autoconfigure:
     #    exclude:
     #        - org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
-    datasource: 
+    datasource:
         url: jdbc:postgresql://localhost:5432/algo
         username: postgres
-        password: admin123
+        password: ANOGU9ydYF
         driver-class-name: org.postgresql.Driver
-    jpa: 
+    jpa:
         generate-ddl: true
         hibernate:
-            ddl-auto: create-drop 
+            ddl-auto: create-drop
