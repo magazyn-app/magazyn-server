@@ -32,7 +32,7 @@ public class ItemController {
 
     @GetMapping(api_ALL + api_PATH_VARIABLE)
     public ResponseEntity<List<Item>> getTypedItems(@PathVariable String pathVariable) {
-        return toResponse(itemService.getTypedFoods(pathVariable));
+        return toResponse(itemService.getTypedItems(pathVariable));
     }
 
     @GetMapping(api_PATH_VARIABLE)

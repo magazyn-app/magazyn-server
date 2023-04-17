@@ -9,7 +9,7 @@ import com.magazyn.magazynserver.data.model.Item;
 
 @Service
 public interface ItemService {
-    List<Item> getTypedFoods(String type) throws ItemTypeNotFoundException;
+    List<Item> getTypedItems(String type) throws ItemTypeNotFoundException;
 
     List<Item> getAllItems();
 

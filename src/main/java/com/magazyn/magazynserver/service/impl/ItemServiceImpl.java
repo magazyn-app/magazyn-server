@@ -29,7 +29,7 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
-    public List<Item> getTypedFoods(String type) throws ItemTypeNotFoundException {
+    public List<Item> getTypedItems(String type) throws ItemTypeNotFoundException {
         List<Item> allItems = items.findAll();
         List<Item> typedItems = new ArrayList<>();
 
