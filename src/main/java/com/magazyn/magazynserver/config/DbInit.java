@@ -33,7 +33,7 @@ public class DbInit {
     public void init() {
         initItems();
         initUsers();
-        initUserItemEntries();
+        initUserItems();
     }
 
     private void initItems() {
@@ -57,7 +57,7 @@ public class DbInit {
         users.saveAll(toAdd);
     }
 
-    private void initUserItemEntries() {
+    private void initUserItems() {
         List<UserItem> toAdd = List.of(
                 new UserItem(null, 1L, 1L, 1),
                 new UserItem(null, 1L, 2L, 1),

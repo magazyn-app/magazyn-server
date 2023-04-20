@@ -3,11 +3,7 @@ package com.magazyn.magazynserver.data.model;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.magazyn.magazynserver.data.object.ItemType;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,7 +12,6 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @JsonAutoDetect
-@AllArgsConstructor
 public class Item {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -24,5 +19,13 @@ public class Item {
     private Long itemId;
     private String name;
     private Double price;
+    @Enumerated(EnumType.STRING)
     private ItemType type;
+
+    public Item(Long itemId, String name, Double price, ItemType type) {
+        this.itemId = itemId;
+        this.name = name;
+        this.price = price;
+        this.type = type;
+    }
 }
