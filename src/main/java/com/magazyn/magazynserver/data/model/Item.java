@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 @JsonAutoDetect
 public class Item {
     @Id
@@ -22,10 +23,4 @@ public class Item {
     @Enumerated(EnumType.STRING)
     private ItemType type;
 
-    public Item(Long itemId, String name, Double price, ItemType type) {
-        this.itemId = itemId;
-        this.name = name;
-        this.price = price;
-        this.type = type;
-    }
 }
