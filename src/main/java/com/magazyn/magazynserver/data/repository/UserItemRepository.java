@@ -11,8 +11,6 @@ import java.util.List;
 
 @Repository
 public interface UserItemRepository extends JpaRepository<UserItem, Long> {
-    UserItem findUserItemEntryByUserEntryId(Long id);
-
 
     UserItem findUserItemEntryByUserId(Long id);
 

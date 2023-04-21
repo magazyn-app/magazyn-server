@@ -22,7 +22,6 @@ public class Item {
     private Long itemId;
     private String name;
     private Double price;
-    @Enumerated(EnumType.STRING)
     private ItemType type;
 
 }
