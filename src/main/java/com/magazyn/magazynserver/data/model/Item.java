@@ -3,10 +3,12 @@ package com.magazyn.magazynserver.data.model;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.magazyn.magazynserver.data.object.ItemType;
 
-import jakarta.persistence.*;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
 
 @Entity
 @Data

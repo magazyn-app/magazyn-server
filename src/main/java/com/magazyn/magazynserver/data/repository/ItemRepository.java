@@ -6,7 +6,6 @@ import org.springframework.stereotype.Component;
 import com.magazyn.magazynserver.data.model.Item;
 import org.springframework.stereotype.Repository;
 
-@Component
 @Repository
 public interface ItemRepository extends JpaRepository<Item, Long> {
     Item findByItemId(Long itemId);

@@ -11,8 +11,7 @@ import com.magazyn.magazynserver.data.model.Item;
 import com.magazyn.magazynserver.data.object.ItemType;
 import com.magazyn.magazynserver.data.repository.ItemRepository;
 
-import jakarta.annotation.PostConstruct;
-
+import javax.annotation.PostConstruct;
 import java.util.List;
 
 @Component
