@@ -25,8 +25,8 @@ public class CartManagerServiceImpl implements CartManagerService {
     }
 
     @Override
-    public String deleteCart(String userId) {
-        return userItemRepository.findUserItemByUserId(Long.valueOf(userId));
+    public void deleteCart(String userId) {
+        userItemRepository.deleteUserItemsByUserId(Long.valueOf(userId));
     }
 
 }

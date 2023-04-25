@@ -13,4 +13,6 @@ import java.util.List;
 public interface UserItemRepository extends JpaRepository<UserItem, Long> {
 
     List<UserItem> findUserItemByUserId(Long id);
+
+    void deleteUserItemsByUserId(Long id);
 }
