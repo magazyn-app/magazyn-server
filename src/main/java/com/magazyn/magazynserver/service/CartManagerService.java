@@ -9,6 +9,8 @@ import java.util.List;
 @Service
 public interface CartManagerService {
 
-    List<UserItem> userCart(String id);
+    List<UserItem> userCart(String userId);
+
+    String deleteCart(String userId);
 
 }

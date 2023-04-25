@@ -12,6 +12,9 @@ public class HttpUtil {
         } else {
             return ResponseEntity.ok(list);
         }
+    }
 
+    public static ResponseEntity<String> toResponse(String data, int statusCode) {
+        return ResponseEntity.status(statusCode).body(data);
     }
 }

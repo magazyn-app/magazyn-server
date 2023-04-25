@@ -20,7 +20,13 @@ public class CartManagerServiceImpl implements CartManagerService {
     }
 
     @Override
-    public List<UserItem> userCart(String id) {
-        return userItemRepository.findUserItemByUserId(Long.valueOf(id));
+    public List<UserItem> userCart(String userId) {
+        return userItemRepository.findUserItemByUserId(Long.valueOf(userId));
     }
+
+    @Override
+    public String deleteCart(String userId) {
+        return userItemRepository.findUserItemByUserId(Long.valueOf(userId));
+    }
+
 }

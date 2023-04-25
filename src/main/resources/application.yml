@@ -8,7 +8,7 @@ spring:
     datasource:
         url: jdbc:postgresql://localhost:5432/algo
         username: postgres
-        password: ANOGU9ydYF
+        password: admin123
         driver-class-name: org.postgresql.Driver
     jpa:
         generate-ddl: true
