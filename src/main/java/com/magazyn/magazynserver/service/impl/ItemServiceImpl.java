@@ -14,6 +14,7 @@ import com.magazyn.magazynserver.data.object.ItemType;
 import com.magazyn.magazynserver.data.repository.ItemRepository;
 import com.magazyn.magazynserver.service.ItemService;
 
+
 @Component
 public class ItemServiceImpl implements ItemService {
 

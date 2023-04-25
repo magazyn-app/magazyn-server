@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.magazyn.magazynserver.data.model.Item;
 
+
 @Service
 public interface ItemService {
     List<Item> getTypedItems(String type) throws ItemTypeNotFoundException;

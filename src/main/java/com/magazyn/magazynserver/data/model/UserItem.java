@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+
 @Entity
 @Data
 @NoArgsConstructor
@@ -12,9 +13,10 @@ import lombok.NoArgsConstructor;
 public class UserItem {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "user_entry_id")
-    private Long userEntryId;
-    private Long userId;
-    private Long itemId;
+    private Long id;
+    @OneToOne
+    private Item item;
+    @ManyToOne
+    private User user;
     private Integer quantity;
 }
