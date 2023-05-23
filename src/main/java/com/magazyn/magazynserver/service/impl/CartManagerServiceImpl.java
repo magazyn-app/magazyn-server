@@ -4,6 +4,7 @@ import com.magazyn.magazynserver.data.model.UserItem;
 import com.magazyn.magazynserver.data.repository.UserItemRepository;
 import com.magazyn.magazynserver.service.CartManagerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -20,7 +21,17 @@ public class CartManagerServiceImpl implements CartManagerService {
     }
 
     @Override
-    public List<UserItem> userCart(String id) {
-        return userItemRepository.findUserItemByUserId(Long.valueOf(id));
+    public List<UserItem> userCart(String userId) {
+        return userItemRepository.findUserItemByUserId(Long.valueOf(userId));
     }
+
+    @Override
+    public Integer deleteCart(String userId) {
+        int result = userItemRepository.deleteUserItemsByUserId(Long.valueOf(userId));
+        if (result > 0){
+            return HttpStatus.OK.value();
+        }
+        return HttpStatus.EXPECTATION_FAILED.value();
+    }
+
 }
