@@ -27,11 +27,30 @@ public class CartManagerServiceImpl implements CartManagerService {
 
     @Override
     public Integer deleteCart(String userId) {
-        int result = userItemRepository.deleteUserItemsByUserId(Long.valueOf(userId));
-        if (result > 0){
+        return responseStatus(userItemRepository.deleteUserItemsByUserId(Long.valueOf(userId)));
+    }
+
+    @Override
+    public Integer deleteItemEntry(String userId, String itemId) {
+        return responseStatus(userItemRepository.deleteItemEntry(Long.valueOf(userId), Long.valueOf(itemId)));
+    }
+
+    @Override
+    public Integer deleteItem(String userId, String itemId) {
+        int response = userItemRepository.deleteItem(Long.valueOf(userId), Long.valueOf(itemId));
+        int deleted = userItemRepository.itemsPrune(Long.valueOf(userId), Long.valueOf(itemId));
+        if (response>0 && deleted>0) {
+            return HttpStatus.ACCEPTED.value();
+        } else if (response>0) {
             return HttpStatus.OK.value();
         }
         return HttpStatus.EXPECTATION_FAILED.value();
     }
 
+    private Integer responseStatus(int result) {
+        if (result > 0){
+            return HttpStatus.OK.value();
+        }
+        return HttpStatus.EXPECTATION_FAILED.value();
+    }
 }
