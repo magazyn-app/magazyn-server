@@ -11,6 +11,6 @@ public interface CartManagerService {
 
     List<UserItem> userCart(String userId);
 
-    void deleteCart(String userId);
+    Integer deleteCart(String userId);
 
 }

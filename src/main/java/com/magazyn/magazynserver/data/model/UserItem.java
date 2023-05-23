@@ -1,7 +1,6 @@
 package com.magazyn.magazynserver.data.model;
 
 import jakarta.persistence.*;
-import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

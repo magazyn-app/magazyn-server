@@ -33,7 +33,6 @@ public class CartController {
 
     @DeleteMapping(api_USER + api_PATH_VARIABLE)
     public ResponseEntity<String> deleteCartForUser(@PathVariable String pathVariable) {
-        cartManagerService.deleteCart(pathVariable);
-        return toResponse("", 404);
+        return toResponse("", cartManagerService.deleteCart(pathVariable));
     }
 }
