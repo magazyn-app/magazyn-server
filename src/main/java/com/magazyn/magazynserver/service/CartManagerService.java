@@ -13,4 +13,6 @@ public interface CartManagerService {
 
     Integer deleteCart(String userId);
 
+    Integer deleteItemEntry(String userId, String itemId);
+
 }

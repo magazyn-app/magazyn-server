@@ -9,9 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-import static com.magazyn.magazynserver.config.Constants.api_CART;
-import static com.magazyn.magazynserver.config.Constants.api_PATH_VARIABLE;
-import static com.magazyn.magazynserver.config.Constants.api_USER;
+import static com.magazyn.magazynserver.config.Constants.*;
 import static com.magazyn.magazynserver.util.HttpUtil.toResponse;
 
 @Transactional
@@ -35,4 +33,12 @@ public class CartController {
     public ResponseEntity<String> deleteCartForUser(@PathVariable String pathVariable) {
         return toResponse("", cartManagerService.deleteCart(pathVariable));
     }
+
+    @DeleteMapping(api_USER + api_PATH_VARIABLE + api_ITEMS + "/{itemId}")
+    public ResponseEntity<String> deleteItemEntry(@PathVariable String pathVariable, @PathVariable String itemId) {
+        return toResponse("", cartManagerService.deleteItemEntry(pathVariable, itemId));
+    }
+
+
+
 }
