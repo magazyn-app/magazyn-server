@@ -1,6 +1,7 @@
 package com.magazyn.magazynserver.controller;
 
 import com.magazyn.magazynserver.data.model.UserItem;
+import com.magazyn.magazynserver.data.object.AddUserItemResponse;
 import com.magazyn.magazynserver.service.CartManagerService;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,4 +45,8 @@ public class CartController {
         return toResponse("", cartManagerService.deleteItem(pathVariable, itemId));
     }
 
+    @PostMapping(api_USER + api_PATH_VARIABLE + api_ITEMS + "/{itemId}")
+    public ResponseEntity<AddUserItemResponse> addNewItem(@PathVariable String pathVariable, @PathVariable String itemId){
+        return ResponseEntity.ok(cartManagerService.addNewItem(pathVariable, itemId));
+    }
 }
