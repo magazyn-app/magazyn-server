@@ -48,11 +48,13 @@ public class CartManagerServiceImpl implements CartManagerService {
     public Integer deleteItem(String userId, String itemId) {
         int response = userItemRepository.deleteItem(Long.valueOf(userId), Long.valueOf(itemId));
         int deleted = userItemRepository.itemsPrune(Long.valueOf(userId), Long.valueOf(itemId));
+
         if (response > 0 && deleted > 0) {
             return HttpStatus.ACCEPTED.value();
         } else if (response > 0) {
             return HttpStatus.OK.value();
         }
+
         return HttpStatus.EXPECTATION_FAILED.value();
     }
 
@@ -61,6 +63,7 @@ public class CartManagerServiceImpl implements CartManagerService {
         long userLongId = Long.parseLong(userId);
         long itemLongId = Long.parseLong(itemId);
         UserItem userItem = userItemRepository.findUserItemByItem_ItemIdAndUser_Id(itemLongId, userLongId);
+
         if (userItem == null) {
             userItem = new UserItem();
             Item item = itemRepository.findById(itemLongId).orElseThrow();
@@ -69,12 +72,14 @@ public class CartManagerServiceImpl implements CartManagerService {
             userItem.setUser(user);
             userItem.setQuantity(1);
             userItemRepository.save(userItem);
+
             return new AddUserItemResponse(user.getId(), item.getItemId(), 1);
-        } else {
-            userItem.setQuantity(userItem.getQuantity() + 1);
-            userItemRepository.save(userItem);
-            return new AddUserItemResponse(userItem.getUser().getId(), userItem.getItem().getItemId(), userItem.getQuantity());
         }
+
+        userItem.setQuantity(userItem.getQuantity() + 1);
+        userItemRepository.save(userItem);
+
+        return new AddUserItemResponse(userItem.getUser().getId(), userItem.getItem().getItemId(), userItem.getQuantity());
     }
 
     private Integer responseStatus(int result) {

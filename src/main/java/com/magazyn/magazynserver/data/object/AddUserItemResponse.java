@@ -6,7 +6,6 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class AddUserItemResponse {
-
     private long userId;
     private long itemId;
     private int quantity;
