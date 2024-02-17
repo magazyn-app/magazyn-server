@@ -35,7 +35,6 @@ public class ItemServiceImpl implements ItemService {
         List<Item> allItems = items.findAll();
         List<Item> typedItems = new ArrayList<>();
 
-
         allItems.forEach(item -> {
             try {
                 var itemType = ItemType.valueOf(type.toUpperCase());
@@ -48,7 +47,6 @@ public class ItemServiceImpl implements ItemService {
         });
 
         return typedItems;
-
     }
 
     @Override

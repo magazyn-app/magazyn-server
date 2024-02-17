@@ -18,7 +18,7 @@ import static com.magazyn.magazynserver.util.HttpUtil.toResponse;
 @RequestMapping(api_CART)
 public class CartController {
 
-    CartManagerService cartManagerService;
+    private final CartManagerService cartManagerService;
 
     @Autowired
     public CartController(CartManagerService cartManagerService) {
@@ -46,7 +46,7 @@ public class CartController {
     }
 
     @PostMapping(api_USER + api_PATH_VARIABLE + api_ITEMS + "/{itemId}")
-    public ResponseEntity<AddUserItemResponse> addNewItem(@PathVariable String pathVariable, @PathVariable String itemId){
+    public ResponseEntity<AddUserItemResponse> addNewItem(@PathVariable String pathVariable, @PathVariable String itemId) {
         return ResponseEntity.ok(cartManagerService.addNewItem(pathVariable, itemId));
     }
 }

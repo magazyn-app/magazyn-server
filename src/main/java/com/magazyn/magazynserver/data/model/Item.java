@@ -27,5 +27,4 @@ public class Item {
     private Double price;
     @Enumerated(EnumType.STRING)
     private ItemType type;
-
 }

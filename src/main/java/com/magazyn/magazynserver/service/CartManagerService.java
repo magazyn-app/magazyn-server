@@ -19,5 +19,4 @@ public interface CartManagerService {
     Integer deleteItem(String userId, String itemId);
 
     AddUserItemResponse addNewItem(String userID, String itemId);
-
 }
