@@ -39,7 +39,7 @@ jobs:
 
     - name: Build project with Maven
       run: |
-        mvn -B clean compile
+        mvn -B clean compile --file pom.xml
 
     - name: Test project with Maven
       run: |
