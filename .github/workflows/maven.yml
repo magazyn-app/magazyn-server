@@ -6,10 +6,10 @@ on:
 
 jobs:
   soos_dast_analysis_example:
-    name: SOOS DAST Analysis Example
+    name: SOOS DAST test
     runs-on: ubuntu-latest
     steps:
-      - name: Run SOOS DAST Analysis
+      - name: Run SOOS DAST test
         uses: soos-io/soos-dast-github-action@v2
         with:
           client_id: i78cbw2bh
