@@ -26,26 +26,31 @@ public class CartController {
     }
 
     @GetMapping(api_USER + api_PATH_VARIABLE)
+    @CrossOrigin(origins = "http://localhost:3000")
     public ResponseEntity<List<UserItem>> getCartForUser(@PathVariable String pathVariable) {
         return toResponse(cartManagerService.userCart(pathVariable));
     }
 
     @DeleteMapping(api_USER + api_PATH_VARIABLE)
+    @CrossOrigin(origins = "http://localhost:3000")
     public ResponseEntity<String> deleteCartForUser(@PathVariable String pathVariable) {
         return toResponse("", cartManagerService.deleteCart(pathVariable));
     }
 
     @DeleteMapping(api_USER + api_PATH_VARIABLE + api_ITEMS + "/{itemId}")
+    @CrossOrigin(origins = "http://localhost:3000")
     public ResponseEntity<String> deleteItemEntry(@PathVariable String pathVariable, @PathVariable String itemId) {
         return toResponse("", cartManagerService.deleteItemEntry(pathVariable, itemId));
     }
 
     @DeleteMapping(api_USER + api_PATH_VARIABLE + api_ITEM + "/{itemId}")
+    @CrossOrigin(origins = "http://localhost:3000")
     public ResponseEntity<String> deleteItem(@PathVariable String pathVariable, @PathVariable String itemId) {
         return toResponse("", cartManagerService.deleteItem(pathVariable, itemId));
     }
 
     @PostMapping(api_USER + api_PATH_VARIABLE + api_ITEMS + "/{itemId}")
+    @CrossOrigin(origins = "http://localhost:3000")
     public ResponseEntity<AddUserItemResponse> addNewItem(@PathVariable String pathVariable, @PathVariable String itemId) {
         return ResponseEntity.ok(cartManagerService.addNewItem(pathVariable, itemId));
     }
