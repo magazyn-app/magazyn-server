@@ -34,7 +34,7 @@ jobs:
 
     steps:
       - name: Deploy Locally
-        run: java -jar target/magazyn-server.jar
+        run: java -jar target/magazyn-server-0.0.1-SNAPSHOT.jar
 
   dast_test:
     name: SOOS DAST test
