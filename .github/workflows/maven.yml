@@ -3,7 +3,7 @@ name: Build, Test, and Analyze Spring Boot Application
 on:
   push:
     branches: [main]
-
+    
 jobs:
   build_test_and_analyze:
     name: Build, Test and Analyze
