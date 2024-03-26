@@ -47,4 +47,4 @@ jobs:
           project_name: "magazyn-server"
           scan_mode: "baseline"
           api_url: "https://api.soos.io/api/"
-          target_url: ${{ steps.ngrok.outputs.url }}
+          target_url: "https://43b9-2a01-111f-b24-2b00-34f0-c23b-184f-f147.ngrok-free.app/"
