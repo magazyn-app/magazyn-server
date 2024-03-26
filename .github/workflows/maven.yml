@@ -41,7 +41,7 @@ jobs:
 
       - name: Get Ngrok URL
         id: ngrok
-        run: echo "::set-output name=url::$(curl -s http://localhost:4040/api/tunnels | jq -r '.tunnels[0].public_url')"
+        run: echo "::set-output name=url::$(curl -s http://localhost:8080/api/tunnels | jq -r '.tunnels[0].public_url')"
 
       - name: Deploy Spring Boot Application to Ngrok
         run: |
