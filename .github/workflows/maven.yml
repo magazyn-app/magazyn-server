@@ -3,8 +3,8 @@ name: CI/CD Pipeline
 on:
   push:
     branches:
-      - main
-
+      - main 
+      
 jobs:
   build:
     name: Build and Test
@@ -33,11 +33,6 @@ jobs:
     if: github.ref == 'refs/heads/main'
 
     steps:
-      - name: Deploy Spring Boot Application to Ngrok
-        run: |
-          NGROK_URL=https://43b9-2a01-111f-b24-2b00-34f0-c23b-184f-f147.ngrok-free.app/
-          curl -X POST $NGROK_URL
-        shell: bash
 
       - name: Run SOOS DAST test
         uses: soos-io/soos-dast-github-action@v2
