@@ -33,7 +33,6 @@ jobs:
     if: github.ref == 'refs/heads/main'
 
     steps:
-
       - name: Run SOOS DAST test
         uses: soos-io/soos-dast-github-action@v2
         with:
