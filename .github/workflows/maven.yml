@@ -45,7 +45,7 @@ jobs:
 
       - name: Deploy Spring Boot Application to Ngrok
         run: |
-          wget http://localhost:4040/api/tunnels -O ngrok.json
+          wget http://localhost:8080/api/tunnels -O ngrok.json
           NGROK_URL=$(cat ngrok.json | jq -r '.tunnels[0].public_url')
           curl -X POST $NGROK_URL
         shell: bash
