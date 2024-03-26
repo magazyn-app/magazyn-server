@@ -33,19 +33,6 @@ jobs:
     if: github.ref == 'refs/heads/main'
 
     steps:
-      - name: Start Ngrok
-        run: |
-          curl -o ngrok.zip https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip
-          unzip ngrok.zip
-          ./ngrok http 8080 &>/dev/null &
-
-      - name: Wait for Ngrok to Initialize
-        run: sleep 5 
-
-      - name: Get Ngrok URL
-        id: ngrok
-        run: echo "::set-output name=url::$(curl -s http://localhost:8080/api/tunnels | jq -r '.tunnels[0].public_url')"
-
       - name: Run SOOS DAST test
         uses: soos-io/soos-dast-github-action@v2
         with:
@@ -54,4 +41,4 @@ jobs:
           project_name: "magazyn-server"
           scan_mode: "baseline"
           api_url: "https://api.soos.io/api/"
-          target_url: ${{ steps.ngrok.outputs.url }}
+          target_url: "https://43b9-2a01-111f-b24-2b00-34f0-c23b-184f-f147.ngrok-free.app/"
