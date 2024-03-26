@@ -26,13 +26,30 @@ jobs:
       - name: Run Tests
         run: mvn test
 
-  deploy:
-    name: Deploy with Ngrok
+  deploy_and_test:
+    name: Deploy with Ngrok and Test
     runs-on: ubuntu-latest
     needs: build
     if: github.ref == 'refs/heads/main'
 
     steps:
+      - name: Start Ngrok
+        run: ngrok http 8080 &>/dev/null &
+
+      - name: Wait for Ngrok to Initialize
+        run: sleep 5 # Adjust the sleep time as needed
+
+      - name: Get Ngrok URL
+        id: ngrok
+        run: echo "::set-output name=url::$(curl -s http://localhost:4040/api/tunnels | jq -r '.tunnels[0].public_url')"
+
+      - name: Deploy Spring Boot Application to Ngrok
+        run: |
+          wget http://localhost:4040/api/tunnels -O ngrok.json
+          NGROK_URL=$(cat ngrok.json | jq -r '.tunnels[0].public_url')
+          curl -X POST $NGROK_URL
+        shell: bash
+
       - name: Run SOOS DAST test
         uses: soos-io/soos-dast-github-action@v2
         with:
@@ -41,4 +58,4 @@ jobs:
           project_name: "magazyn-server"
           scan_mode: "baseline"
           api_url: "https://api.soos.io/api/"
-          target_url: "https://43b9-2a01-111f-b24-2b00-34f0-c23b-184f-f147.ngrok-free.app/"
+          target_url: ${{ steps.ngrok.outputs.url }}
