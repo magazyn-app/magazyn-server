@@ -33,20 +33,9 @@ jobs:
     if: github.ref == 'refs/heads/main'
 
     steps:
-      - name: Start Ngrok
-        run: ngrok http 8080 &>/dev/null &
-
-      - name: Wait for Ngrok to Initialize
-        run: sleep 5 # Adjust the sleep time as needed
-
-      - name: Get Ngrok URL
-        id: ngrok
-        run: echo "::set-output name=url::$(curl -s http://localhost:8080/api/tunnels | jq -r '.tunnels[0].public_url')"
-
       - name: Deploy Spring Boot Application to Ngrok
         run: |
-          wget http://localhost:8080/api/tunnels -O ngrok.json
-          NGROK_URL=$(cat ngrok.json | jq -r '.tunnels[0].public_url')
+          NGROK_URL=https://43b9-2a01-111f-b24-2b00-34f0-c23b-184f-f147.ngrok-free.app/
           curl -X POST $NGROK_URL
         shell: bash
 
