@@ -36,8 +36,8 @@ jobs:
       - name: Run SOOS DAST test
         uses: soos-io/soos-dast-github-action@v2
         with:
-          client_id: i78cbw2bh
-          api_key: NTc1MDMzNjMtODU2Ni00MTE4LTkxODYtMTVlN2JkNWQwMjgy
+          client_id: pj43rhf2l
+          api_key: NjQ1ODExYTQtMzc5Mi00ODhlLThkMTctMWM1OGFhNGFkNTdh
           project_name: "magazyn-server"
           scan_mode: "baseline"
           api_url: "https://api.soos.io/api/"
