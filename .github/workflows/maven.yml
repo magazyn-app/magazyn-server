@@ -27,23 +27,26 @@ jobs:
         run: mvn test
 
   deploy:
-    name: Deploy Locally
+    name: Deploy with Ngrok
     runs-on: ubuntu-latest
     needs: build
     if: github.ref == 'refs/heads/main'
 
     steps:
-      - name: Deploy Locally
-        run: java -jar target/magazyn-server-0.0.1-SNAPSHOT.jar
+      - name: Start Ngrok
+        run: |
+          curl -o ngrok.zip https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip
+          unzip ngrok.zip
+          ./ngrok http 8080 &>/dev/null &
 
-  dast_test:
-    name: SOOS DAST test
-    runs-on: ubuntu-latest
-    needs: deploy
-    if: github.ref == 'refs/heads/main'
+      - name: Wait for Ngrok to Initialize
+        run: sleep 5 
 
-    steps:
-      - name: SOOS DAST test
+      - name: Get Ngrok URL
+        id: ngrok
+        run: echo "::set-output name=url::$(curl -s http://localhost:4040/api/tunnels | jq -r '.tunnels[0].public_url')"
+
+      - name: Run SOOS DAST test
         uses: soos-io/soos-dast-github-action@v2
         with:
           client_id: i78cbw2bh
@@ -51,4 +54,4 @@ jobs:
           project_name: "magazyn-server"
           scan_mode: "baseline"
           api_url: "https://api.soos.io/api/"
-          target_url: "http://localhost:8080/"
+          target_url: ${{ steps.ngrok.outputs.url }}
